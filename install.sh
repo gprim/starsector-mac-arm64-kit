@@ -36,6 +36,13 @@ else
     echo "You may need to change allowAnyJavaVersion to true manually."
 fi
 
+# Fix Mac classpath issue on Java 17+ (appends :. to the -cp string in starsector_mac.sh)
+MAC_LAUNCHER="$APP_PATH/Contents/MacOS/starsector_mac.sh"
+if [ -f "$MAC_LAUNCHER" ]; then
+    echo "==> Patching classpath in starsector_mac.sh to fix Java 25 resource loading..."
+    sed -i '' 's/webp-imageio-0.1.6.jar \\/webp-imageio-0.1.6.jar:. \\/g' "$MAC_LAUNCHER"
+fi
+
 echo "=========================================================="
 echo "Installation complete!"
 echo "Starsector is now configured with the Java 25 ARM64 kit."
