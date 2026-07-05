@@ -50,7 +50,7 @@ export JAVA_HOME=../../Home
     -Dcom.fs.starfarer.settings.paths.mods=../../../mods \
     -Dcom.fs.starfarer.settings.paths.logs=../../../logs \
     -Dcom.fs.starfarer.settings.osx=true \
-    -cp ../../Resources/Java/AppleJavaExtensions.jar:../../Resources/Java/commons-compiler-jdk.jar:../../Resources/Java/commons-compiler.jar:../../Resources/Java/fs.sound_obf.jar:../../Resources/Java/janino.jar:../../Resources/Java/jinput.jar:../../Resources/Java/jogg-0.0.7.jar:../../Resources/Java/jorbis-0.0.15.jar:../../Resources/Java/json.jar:../../Resources/Java/log4j-1.2.9.jar:../../Resources/Java/lwjgl.jar:../../Resources/Java/lwjgl_util.jar:../../Resources/Java/starfarer.api.jar:../../Resources/Java/starfarer_obf.jar:../../Resources/Java/fs.common_obf.jar:../../Resources/Java/xstream-1.4.10.jar:../../Resources/Java/txw2-3.0.2.jar:../../Resources/Java/jaxb-api-2.4.0-b180830.0359.jar:../../Resources/Java/webp-imageio-0.1.6.jar:. \
+    -cp ../../Resources/Java/commons-compiler-jdk.jar:../../Resources/Java/commons-compiler.jar:../../Resources/Java/fs.sound_obf.jar:../../Resources/Java/janino.jar:../../Resources/Java/jinput.jar:../../Resources/Java/jogg-0.0.7.jar:../../Resources/Java/jorbis-0.0.15.jar:../../Resources/Java/json.jar:../../Resources/Java/log4j-1.2.9.jar:../../Resources/Java/lwjgl.jar:../../Resources/Java/lwjgl_util.jar:../../Resources/Java/starfarer.api.jar:../../Resources/Java/starfarer_obf.jar:../../Resources/Java/fs.common_obf.jar:../../Resources/Java/xstream-1.4.10.jar:../../Resources/Java/txw2-3.0.2.jar:../../Resources/Java/jaxb-api-2.4.0-b180830.0359.jar:../../Resources/Java/webp-imageio-0.3.3.jar:. \
     com.fs.starfarer.StarfarerLauncher \
     "$@"
 
