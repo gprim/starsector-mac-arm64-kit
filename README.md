@@ -20,14 +20,15 @@ Because the custom ARM64 graphics library (`lwjgl3ify`) used in the community ki
 
 ## How to Install the Kit (For End Users)
 
-Once you have the `Starsector_Mac_ARM64_Java25.zip` file:
+Once you have the `Starsector_Mac_ARM64_Java25.zip` file, you don't need to manually copy files around! Just use the included installation script:
 
-1. Locate your Starsector installation on your Mac (e.g., `Starsector.app`).
-2. Right click it and select **"Show Package Contents"**.
-3. Extract the contents of `Starsector_Mac_ARM64_Java25.zip` directly into the game folder, merging/overwriting files as prompted.
-4. Open `starsector-core/data/config/settings.json` in a text editor.
-5. Search for `allowAnyJavaVersion` and change it from `false` to `true`.
-6. Launch the game! It will now run natively on ARM64 using Java 25.
+1. Open your terminal in this directory.
+2. Run the installer script, optionally providing the path to your Starsector application if it's not in the default location:
+   ```bash
+   ./install.sh /Applications/Starsector.app
+   ```
+3. The script will automatically extract the zip files into the game folder and patch the `allowAnyJavaVersion` flag in your game's `settings.json` file.
+4. Launch the game! It will now run natively on ARM64 using Java 25.
 
 ### Troubleshooting
 If the game icon bounces and then immediately closes, check the `vmparams` file (or `Info.plist`) for any old JVM arguments. Specifically, if you see things like `-XX:+UseBiasedLocking` or `-XX:+UseConcMarkSweepGC`, remove them, as Java 25 no longer supports these older garbage collection methods.
