@@ -19,6 +19,7 @@ export JAVA_HOME=../../Home
     -Djava.library.path=../../Resources/Java/native/macosx \
     -Djava.util.Arrays.useLegacyMergeSort=true \
     -noverify \
+    -XX:+UnlockDiagnosticVMOptions \
     -XX:-BytecodeVerificationLocal \
     -XX:-BytecodeVerificationRemote \
     --add-opens=java.base/sun.nio.ch=ALL-UNNAMED \
