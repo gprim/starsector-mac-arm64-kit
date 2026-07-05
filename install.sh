@@ -27,7 +27,13 @@ SETTINGS_FILE=$(find "$APP_PATH" -name "settings.json" | grep "Java/data/config"
 if [ -n "$SETTINGS_FILE" ] && [ -f "$SETTINGS_FILE" ]; then
     echo "Found settings.json at $SETTINGS_FILE"
     sed -i '' 's/"allowAnyJavaVersion":false/"allowAnyJavaVersion":true/g' "$SETTINGS_FILE"
-    echo "==> Successfully patched allowAnyJavaVersion to true!"
+    
+    # Fix OpenAL sound deadlock on Apple Silicon
+    if ! grep -q "loadSoundsConcurrently" "$SETTINGS_FILE"; then
+        sed -i '' 's/^{/{\n\t"loadSoundsConcurrently":false,/g' "$SETTINGS_FILE"
+    fi
+    
+    echo "==> Successfully patched settings.json!"
 else
     echo "Warning: Could not find settings.json in $APP_PATH to patch."
     echo "You may need to change allowAnyJavaVersion to true manually."
