@@ -28,7 +28,7 @@ cp -R mac-native-libs/MacOS/* build/Contents/MacOS/
 cp -R mac-native-libs/Resources/Java/* build/Contents/Resources/Java/
 
 echo "==> Packaging $OUTPUT_ZIP..."
-cp ../install.sh build/
+cp install.sh build/
 cd build
 zip -q -r "../$OUTPUT_ZIP" ./*
 cd ..
