@@ -41,6 +41,7 @@ fi
 
 # Fix Mac classpath issue on Java 17+ (appends :. to the -cp string in starsector_mac.sh)
 MAC_LAUNCHER="$APP_PATH/Contents/MacOS/starsector_mac.sh"
+
 if [ -f "$MAC_LAUNCHER" ]; then
     echo "==> Patching classpath in starsector_mac.sh to fix Java 25 resource loading..."
     # Only patch if not already patched
