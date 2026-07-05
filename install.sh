@@ -22,8 +22,8 @@ echo "==> Extracting $ZIP_FILE into $APP_PATH..."
 unzip -o -q "$ZIP_FILE" -d "$APP_PATH"
 
 echo "==> Enabling allowAnyJavaVersion in settings.json..."
-# Find the settings.json file within the app (it usually lives in starsector-core/data/config/settings.json)
-SETTINGS_FILE=$(find "$APP_PATH" -name "settings.json" | grep "starsector-core" | head -n 1)
+# Find the settings.json file within the app (it usually lives in Contents/Resources/Java/data/config/settings.json on Mac)
+SETTINGS_FILE=$(find "$APP_PATH" -name "settings.json" | grep "Java/data/config" | head -n 1)
 
 if [ -n "$SETTINGS_FILE" ] && [ -f "$SETTINGS_FILE" ]; then
     echo "Found settings.json at $SETTINGS_FILE"
