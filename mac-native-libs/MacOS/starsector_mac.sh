@@ -13,6 +13,7 @@ export JAVA_HOME=../../Home
     -Dcom.apple.macos.useScreenMenuBar=false \
     -Dapple.awt.showGrowBox=false \
     -Dfile.encoding=UTF-8 \
+    -Dorg.lwjgl.openal.libname=libopenal.dylib \
     -XX:+UseShenandoahGC \
     -XX:+AlwaysPreTouch \
     -XX:+ParallelRefProcEnabled \
