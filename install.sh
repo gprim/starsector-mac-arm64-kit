@@ -3,7 +3,6 @@ set -e
 
 # Default path unless provided
 APP_PATH="${1:-/Applications/Starsector.app}"
-ZIP_FILE="Starsector_Mac_ARM64_Java25.zip"
 
 if [ ! -d "$APP_PATH" ]; then
     echo "Error: Could not find Starsector at $APP_PATH"
@@ -11,14 +10,14 @@ if [ ! -d "$APP_PATH" ]; then
     exit 1
 fi
 
-if [ ! -f "$ZIP_FILE" ]; then
-    echo "Error: Could not find $ZIP_FILE in current directory."
-    echo "Please run this script from the folder containing the zip."
+if [ ! -d "Contents" ]; then
+    echo "Error: Could not find the 'Contents' folder in the current directory."
+    echo "Please run this script from inside the unzipped payload folder."
     exit 1
 fi
 
-echo "==> Extracting $ZIP_FILE into $APP_PATH..."
-unzip -o -q "$ZIP_FILE" -d "$APP_PATH"
+echo "==> Installing payload into $APP_PATH..."
+cp -R Contents/* "$APP_PATH/Contents/"
 
 echo "==> Enabling allowAnyJavaVersion in settings.json..."
 # Find the settings.json file within the app (it usually lives in Contents/Resources/Java/data/config/settings.json on Mac)
