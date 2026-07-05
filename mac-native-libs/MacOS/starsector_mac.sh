@@ -13,6 +13,7 @@ export JAVA_HOME=../../Home
     -Dcom.apple.macos.useScreenMenuBar=false \
     -Dapple.awt.showGrowBox=false \
     -Dfile.encoding=UTF-8 \
+    -Djdk.xml.maxElementDepth=9999 \
     -Dorg.lwjgl.openal.libname="$DIR/../Resources/Java/native/macosx/libopenal.dylib" \
     -XX:+UseShenandoahGC \
     -XX:+AlwaysPreTouch \
