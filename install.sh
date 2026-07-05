@@ -1,24 +1,23 @@
 #!/bin/bash
 set -e
 
-# Default to the standard Applications folder if no path is provided
+# Default path unless provided
 APP_PATH="${1:-/Applications/Starsector.app}"
 ZIP_FILE="Starsector_Mac_ARM64_Java25.zip"
 
 if [ ! -d "$APP_PATH" ]; then
     echo "Error: Could not find Starsector at $APP_PATH"
-    echo "Usage: ./install.sh [path_to_Starsector.app]"
+    echo "Usage: ./install.sh [/path/to/Starsector.app]"
     exit 1
 fi
 
 if [ ! -f "$ZIP_FILE" ]; then
-    echo "Error: Could not find $ZIP_FILE in the current directory."
-    echo "Make sure you run ./build.sh first!"
+    echo "Error: Could not find $ZIP_FILE in current directory."
+    echo "Please run this script from the folder containing the zip."
     exit 1
 fi
 
 echo "==> Extracting $ZIP_FILE into $APP_PATH..."
-# Unzip overwriting existing files (-o) and quietly (-q)
 unzip -o -q "$ZIP_FILE" -d "$APP_PATH"
 
 echo "==> Enabling allowAnyJavaVersion in settings.json..."
@@ -27,9 +26,7 @@ SETTINGS_FILE=$(find "$APP_PATH" -name "settings.json" | grep "Java/data/config"
 
 if [ -n "$SETTINGS_FILE" ] && [ -f "$SETTINGS_FILE" ]; then
     echo "Found settings.json at $SETTINGS_FILE"
-    # Use sed to replace false with true for the java version check
     sed -i '' 's/"allowAnyJavaVersion":false/"allowAnyJavaVersion":true/g' "$SETTINGS_FILE"
-    sed -i '' 's/"allowAnyJavaVersion": false/"allowAnyJavaVersion": true/g' "$SETTINGS_FILE"
     echo "==> Successfully patched allowAnyJavaVersion to true!"
 else
     echo "Warning: Could not find settings.json in $APP_PATH to patch."
@@ -40,7 +37,10 @@ fi
 MAC_LAUNCHER="$APP_PATH/Contents/MacOS/starsector_mac.sh"
 if [ -f "$MAC_LAUNCHER" ]; then
     echo "==> Patching classpath in starsector_mac.sh to fix Java 25 resource loading..."
-    sed -i '' 's/webp-imageio-0.1.6.jar \\/webp-imageio-0.1.6.jar:. \\/g' "$MAC_LAUNCHER"
+    # Only patch if not already patched
+    if ! grep -q "\:\. \\\\" "$MAC_LAUNCHER"; then
+        sed -i '' 's/webp-imageio-0.1.6.jar \\/webp-imageio-0.1.6.jar:. \\/g' "$MAC_LAUNCHER"
+    fi
 fi
 
 echo "=========================================================="
