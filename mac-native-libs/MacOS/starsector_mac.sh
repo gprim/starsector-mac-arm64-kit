@@ -36,6 +36,9 @@ export JAVA_HOME=../../Home
     --add-opens=java.desktop/java.awt.font=ALL-UNNAMED \
     --add-opens=java.desktop/java.awt.Rectangle=ALL-UNNAMED \
     --add-opens=java.desktop/java.awt=ALL-UNNAMED \
+    --add-opens=java.desktop/sun.lwawt.macosx=ALL-UNNAMED \
+    --add-opens=java.desktop/sun.lwawt=ALL-UNNAMED \
+    --add-opens=java.desktop/sun.awt=ALL-UNNAMED \
     --add-exports=java.base/jdk.internal.ref=ALL-UNNAMED \
     --add-exports=java.base/jdk.internal.misc=ALL-UNNAMED \
     --add-exports=java.base/sun.nio.ch=ALL-UNNAMED \
